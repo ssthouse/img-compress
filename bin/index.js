@@ -7,7 +7,10 @@ const keyManager = new KeyManager();
 
 function isInitCmd() {
   for (let arg of process.argv) {
-    if (arg.indexOf("init") !== 0) return true;
+    if (arg.indexOf("init") !== -1) {
+      console.log(arg);
+      return true;
+    }
   }
   return false;
 }
@@ -26,10 +29,11 @@ function getApiKeyFromArgv() {
   return process.argv[keyArgIndex];
 }
 
+console.log(`running~~~~`);
+
 if (isInitCmd()) {
   const apiKeyFromArg = getApiKeyFromArgv();
   if (!apiKeyFromArg) return;
-
   keyManager.setKey(apiKeyFromArg);
 } else {
   if (!keyManager.getKey()) {
@@ -37,12 +41,22 @@ if (isInitCmd()) {
       `before use it, please config the api-ke, for example: "img-compress init -key *******"`
     );
   }
+  console.log(`压缩ing......`);
   const apiKey = keyManager.getKey();
   const tinify = require("tinify");
   tinify.key = apiKey;
-  const filePath = process.argv[1];
-  const destPath = "test.png";
-  tinify.fromFile(filePath).toFile(destPath);
+  const originFilePath = process.argv[2];
+  let destFilePath = originFilePath.replace(".png", "_compressed.png");
+  destFilePath = destFilePath.replace(".jpg", "_compressed.jpg");
+  console.log(`原图: ${originFilePath}    结果图: ${destFilePath}`);
+  tinify
+    .fromFile(originFilePath)
+    .toFile(destFilePath)
+    .then(() => {
+      console.log(`图片压缩成功`);
+    })
+    .catch(e => {
+      console.log(`图片压缩失败: ${e.message}`);
+      console.log(e);
+    });
 }
-
-imageCompresser.compress("./test.png");
