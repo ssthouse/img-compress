@@ -1,5 +1,5 @@
 {
-  "name": "image-compresser",
+  "name": "@ssthouse/image-compresser",
   "version": "1.0.0",
   "description": "",
   "main": "./lib/image-compresser.js",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/ssthouse/image-compresser.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "ssthouse",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ssthouse/image-compresser/issues"

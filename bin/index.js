@@ -60,9 +60,11 @@ function runCompress() {
   const apiKey = keyManager.getKey();
   const tinify = require("tinify");
   tinify.key = apiKey;
+  tinify.proxy = "http://dev-proxy.oa.com:8080";
   const originFilePath = process.argv[2];
   let destFilePath = originFilePath.replace(".png", "_compressed.png");
   destFilePath = destFilePath.replace(".jpg", "_compressed.jpg");
+  destFilePath = destFilePath.replace(".jpeg", "_compressed.jpeg");
   // console.log(`原图: ${originFilePath}    结果图: ${destFilePath}`);
   tinify
     .fromFile(originFilePath)
