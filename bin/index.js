@@ -27,6 +27,7 @@ if (isInitCmd()) {
   const apiKeyFromArg = getApiKeyFromArgv();
   if (!apiKeyFromArg) return;
   keyManager.setKey(apiKeyFromArg);
+  return;
 }
 
 if (!keyManager.getKey()) {
@@ -38,7 +39,6 @@ imageCompresser(imgPath);
 function isInitCmd() {
   for (let arg of process.argv) {
     if (arg.indexOf("init") !== -1) {
-      console.log(arg);
       return true;
     }
   }

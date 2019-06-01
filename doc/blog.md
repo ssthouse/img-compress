@@ -50,3 +50,4 @@ https://tinyjpg.com/ 是一个图片压缩网站, 在进行图片压缩的同时
 
 不带参数的执行该工具就可以看到使用说明, 如有遇到问题可以在这里提issue:
 
+[@ssthouse/img-compress](https://github.com/ssthouse/img-compress)
