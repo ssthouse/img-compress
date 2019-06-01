@@ -1,5 +1,5 @@
 {
-  "name": "@ssthouse/image-compresser",
+  "name": "@ssthouse/img-compress",
   "version": "1.2.0",
   "description": "",
   "main": "./lib/image-compresser.js",
