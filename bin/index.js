@@ -14,18 +14,26 @@ if (isEmptyArg()) {
   return;
 }
 
+if (isSetProxyCmd()) {
+  if (process.argv.length < 4) {
+    consoleUtil.printSetProxyHint();
+    return;
+  }
+  keyManager.setProxy(process.argv[3]);
+  return;
+}
+
 if (isInitCmd()) {
   const apiKeyFromArg = getApiKeyFromArgv();
   if (!apiKeyFromArg) return;
   keyManager.setKey(apiKeyFromArg);
-} else {
-  if (!keyManager.getKey()) {
-    consoleUtil.printInitKeyHint();
-  }
-  const imgPath = process.argv[2];
-  imageCompresser(imgPath);
 }
 
+if (!keyManager.getKey()) {
+  consoleUtil.printInitKeyHint();
+}
+const imgPath = process.argv[2];
+imageCompresser(imgPath);
 
 function isInitCmd() {
   for (let arg of process.argv) {
@@ -47,4 +55,9 @@ function getApiKeyFromArgv() {
     return "";
   }
   return process.argv[keyArgIndex];
+}
+
+
+function isSetProxyCmd() {
+  return process.argv[2] === "proxy";
 }
