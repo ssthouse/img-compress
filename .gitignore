@@ -5,3 +5,4 @@
 *.jpeg
 apiKey.txt
 proxy.txt
+.DS_Store
