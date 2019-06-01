@@ -15,7 +15,7 @@ https://tinyjpg.com/ 是一个图片压缩网站, 在进行图片压缩的同时
 1. 安装该命令行工具
 
    ```
-   npm install -g @ssthouse/image-compresser
+   npm install -g @ssthouse/img-compress
    ```
 
    
